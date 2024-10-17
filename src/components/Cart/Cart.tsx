@@ -1,5 +1,5 @@
-import React from 'react';
-import style from './Cart.module.scss'; // Assicurati che il file di stile esista
+import Image from "next/image";
+import style from "./Cart.module.scss";
 
 interface CartProps {
   items: {
@@ -19,13 +19,15 @@ const Cart: React.FC<CartProps> = ({ items, onRemoveFromCart }) => {
         <p>The cart is empty</p>
       ) : (
         <ul>
-          {items.map(item => (
+          {items.map((item) => (
             <li key={item.id}>
-              <img src={item.image} alt={item.title} width={50} />
+              <Image src={item.image} alt={item.title} width={50} height={50} />
               <div>
                 <h3>{item.title}</h3>
                 <p>${item.price}</p>
-                <button onClick={() => onRemoveFromCart(item.id)}>Remove</button>
+                <button onClick={() => onRemoveFromCart(item.id)}>
+                  Remove
+                </button>
               </div>
             </li>
           ))}
@@ -36,4 +38,3 @@ const Cart: React.FC<CartProps> = ({ items, onRemoveFromCart }) => {
 };
 
 export default Cart;
-

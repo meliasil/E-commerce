@@ -1,4 +1,4 @@
-import React from "react";
+import Image from "next/image";
 import style from "./ProductCard.module.scss";
 
 interface ProductCardProps {
@@ -18,7 +18,13 @@ const ProductCard: React.FC<ProductCardProps> = ({
 }) => {
   return (
     <div className={style.card}>
-      <img className={style.image} src={image} alt={title} />
+      <Image
+        className={style.image}
+        src={image}
+        alt={title}
+        width={200}
+        height={200}
+      />
       <h2 className={style.title}>{title}</h2>
       <p className={style.price}>${price}</p>
       <button className={style.addToCart} onClick={() => onAddToCart(id)}>
